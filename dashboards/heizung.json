@@ -51,7 +51,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  warmwasser_speicher \r\nORDER BY \r\n  time ASC",
+                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  ww_speicher \r\nORDER BY \r\n  time ASC",
                         "sql": {
                           "columns": [
                             {
