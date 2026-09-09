@@ -27,7 +27,6 @@
       }
     ],
     "cursorSync": "Off",
-    "description": "",
     "editable": true,
     "elements": {
       "panel-1": {
@@ -83,7 +82,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "New panel",
+          "title": "Heizung",
           "vizConfig": {
             "group": "timeseries",
             "kind": "VizConfig",
