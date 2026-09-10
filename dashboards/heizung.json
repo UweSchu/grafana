@@ -172,7 +172,7 @@
                   "custom": {
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
-                    "axisColorMode": "series",
+                    "axisColorMode": "text",
                     "axisGridShow": true,
                     "axisLabel": "Temperatur",
                     "axisPlacement": "auto",
@@ -412,7 +412,7 @@
                   "custom": {
                     "axisBorderShow": false,
                     "axisCenteredZero": false,
-                    "axisColorMode": "series",
+                    "axisColorMode": "text",
                     "axisGridShow": true,
                     "axisLabel": "Temperatur",
                     "axisPlacement": "auto",
