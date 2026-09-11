@@ -51,7 +51,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  ww_vorlauf",
+                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature::INT AS temperature\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('ww_vorlauf', 'ww_speicher')",
                         "sql": {
                           "columns": [
                             {
@@ -73,86 +73,26 @@
                     },
                     "refId": "ww_vorlauf"
                   }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "eerr7h71y7s3ke"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "dataset": "iox",
-                        "editorMode": "code",
-                        "format": "table",
-                        "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  ww_speicher",
-                        "sql": {
-                          "columns": [
-                            {
-                              "parameters": [],
-                              "type": "function"
-                            }
-                          ],
-                          "groupBy": [
-                            {
-                              "property": {
-                                "type": "string"
-                              },
-                              "type": "groupBy"
-                            }
-                          ]
-                        }
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "ww_speicher"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": true,
-                    "query": {
-                      "datasource": {
-                        "name": "eerr7h71y7s3ke"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "dataset": "iox",
-                        "editorMode": "code",
-                        "format": "table",
-                        "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  hk_vorlauf",
-                        "sql": {
-                          "columns": [
-                            {
-                              "parameters": [],
-                              "type": "function"
-                            }
-                          ],
-                          "groupBy": [
-                            {
-                              "property": {
-                                "type": "string"
-                              },
-                              "type": "groupBy"
-                            }
-                          ]
-                        }
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "hk_vorlauf"
-                  }
                 }
               ],
               "queryOptions": {},
-              "transformations": []
+              "transformations": [
+                {
+                  "group": "partitionByValues",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "fields": [
+                        "sensor"
+                      ],
+                      "keepFields": false,
+                      "naming": {
+                        "asLabels": true
+                      }
+                    }
+                  }
+                }
+              ]
             }
           },
           "description": "",
@@ -204,6 +144,7 @@
                       "mode": "off"
                     }
                   },
+                  "displayName": "${__field.labels.sensor}",
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
@@ -221,14 +162,15 @@
                 "overrides": [
                   {
                     "matcher": {
-                      "id": "byFrameRefID",
-                      "options": "ww_speicher"
+                      "id": "byName",
+                      "options": "temperature ww_vorlauf",
+                      "scope": "series"
                     },
                     "properties": [
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "yellow",
+                          "fixedColor": "blue",
                           "mode": "fixed"
                         }
                       }
@@ -236,8 +178,9 @@
                   },
                   {
                     "matcher": {
-                      "id": "byFrameRefID",
-                      "options": "ww_vorlauf"
+                      "id": "byName",
+                      "options": "temperature ww_speicher",
+                      "scope": "series"
                     },
                     "properties": [
                       {
@@ -276,82 +219,6 @@
             "kind": "QueryGroup",
             "spec": {
               "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": true,
-                    "query": {
-                      "datasource": {
-                        "name": "eerr7h71y7s3ke"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "dataset": "iox",
-                        "editorMode": "code",
-                        "format": "table",
-                        "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  ww_speicher",
-                        "sql": {
-                          "columns": [
-                            {
-                              "parameters": [],
-                              "type": "function"
-                            }
-                          ],
-                          "groupBy": [
-                            {
-                              "property": {
-                                "type": "string"
-                              },
-                              "type": "groupBy"
-                            }
-                          ]
-                        }
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "ww_speicher"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": true,
-                    "query": {
-                      "datasource": {
-                        "name": "eerr7h71y7s3ke"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "dataset": "iox",
-                        "editorMode": "code",
-                        "format": "table",
-                        "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, temperature::INT\r\nFROM \r\n  ww_vorlauf",
-                        "sql": {
-                          "columns": [
-                            {
-                              "parameters": [],
-                              "type": "function"
-                            }
-                          ],
-                          "groupBy": [
-                            {
-                              "property": {
-                                "type": "string"
-                              },
-                              "type": "groupBy"
-                            }
-                          ]
-                        }
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "ww_vorlauf"
-                  }
-                },
                 {
                   "kind": "PanelQuery",
                   "spec": {
