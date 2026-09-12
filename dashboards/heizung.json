@@ -157,7 +157,8 @@
                         "value": 80
                       }
                     ]
-                  }
+                  },
+                  "unit": "celsius"
                 },
                 "overrides": [
                   {
