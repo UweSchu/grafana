@@ -376,7 +376,7 @@
                     "hidden": false,
                     "query": {
                       "datasource": {
-                        "name": "eerr7h71y7s3ke"
+                        "name": "ffy2mvxdmatxcf"
                       },
                       "group": "influxdb",
                       "kind": "DataQuery",
@@ -385,7 +385,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature_c::INT AS hk_vorlauf\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('hk_vorlauf')",
+                        "rawSql": "SELECT \r\n  time, \r\n  temperature::INT AS warmwasser_vorlauf\r\nFROM \r\n  warmwasser_vorlauf\r\n",
                         "sql": {
                           "columns": [
                             {
