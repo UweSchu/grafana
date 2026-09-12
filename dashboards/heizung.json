@@ -51,7 +51,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature::INT AS temperature\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('ww_vorlauf', 'ww_speicher')",
+                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature_c::INT AS temperature\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('ww_vorlauf', 'ww_speicher')",
                         "sql": {
                           "columns": [
                             {
@@ -234,7 +234,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature::INT AS hk_vorlauf\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('hk_vorlauf')",
+                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature_c::INT AS hk_vorlauf\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('hk_vorlauf')",
                         "sql": {
                           "columns": [
                             {
