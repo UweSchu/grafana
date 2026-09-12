@@ -116,7 +116,6 @@
                     "axisGridShow": true,
                     "axisLabel": "",
                     "axisPlacement": "auto",
-                    "axisSoftMax": 80,
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
                     "drawStyle": "line",
@@ -132,8 +131,7 @@
                     "lineWidth": 1.5,
                     "pointSize": 5,
                     "scaleDistribution": {
-                      "log": 2,
-                      "type": "symlog"
+                      "type": "linear"
                     },
                     "showPoints": "never",
                     "showValues": false,
@@ -143,7 +141,7 @@
                       "mode": "none"
                     },
                     "thresholdsStyle": {
-                      "mode": "off"
+                      "mode": "dashed"
                     }
                   },
                   "displayName": "${__field.labels.sensor}",
@@ -156,7 +154,7 @@
                       },
                       {
                         "color": "red",
-                        "value": 80
+                        "value": 45
                       }
                     ]
                   },
