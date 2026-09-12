@@ -128,7 +128,7 @@
                     },
                     "insertNulls": false,
                     "lineInterpolation": "smooth",
-                    "lineWidth": 3,
+                    "lineWidth": 2,
                     "pointSize": 5,
                     "scaleDistribution": {
                       "type": "linear"
