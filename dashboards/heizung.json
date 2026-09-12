@@ -114,7 +114,7 @@
                     "axisCenteredZero": false,
                     "axisColorMode": "text",
                     "axisGridShow": true,
-                    "axisLabel": "Temperatur",
+                    "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
