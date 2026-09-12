@@ -141,7 +141,7 @@
                       "mode": "none"
                     },
                     "thresholdsStyle": {
-                      "mode": "dashed"
+                      "mode": "line"
                     }
                   },
                   "displayName": "${__field.labels.sensor}",
