@@ -383,9 +383,9 @@
                       "spec": {
                         "dataset": "iox",
                         "editorMode": "code",
-                        "format": "table",
+                        "format": "time_series",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  DATE_BIN(INTERVAL '1 day', time) AS time,\r\n  AVG(temperature::INT) AS warmwasser_vorlauf  \r\nFROM \r\n  warmwasser_vorlauf\r\nGROUP BY 1\r\nORDER BY 1 ASC\r\n",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature) AS \"temperature\"\r\nFROM warmwasser_vorlauf\r\nWHERE $__timeFilter(date_trunc('second', time))\r\nGROUP BY 1\r\nORDER BY 1 ASC;\r\n",
                         "sql": {
                           "columns": [
                             {
