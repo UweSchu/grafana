@@ -186,14 +186,14 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "temperature ww_vorlauf",
+                      "options": "ww_speicher",
                       "scope": "series"
                     },
                     "properties": [
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "blue",
+                          "fixedColor": "yellow",
                           "mode": "fixed"
                         }
                       }
@@ -202,14 +202,14 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "temperature ww_speicher",
+                      "options": "ww_vorlauf",
                       "scope": "series"
                     },
                     "properties": [
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "red",
+                          "fixedColor": "blue",
                           "mode": "fixed"
                         }
                       }
