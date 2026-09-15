@@ -42,16 +42,54 @@
                     "hidden": false,
                     "query": {
                       "datasource": {
-                        "name": "eerr7h71y7s3ke"
+                        "name": "efyc45oo0t8g0b"
                       },
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
                         "dataset": "iox",
                         "editorMode": "code",
-                        "format": "table",
+                        "format": "time_series",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature_c::INT AS temperature\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('ww_vorlauf', 'ww_speicher')",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_speicher\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_speicher')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ]
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "ww_speicher"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "efyc45oo0t8g0b"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "iox",
+                        "editorMode": "code",
+                        "format": "time_series",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_vorlauf\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_vorlauf')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
                         "sql": {
                           "columns": [
                             {
@@ -76,23 +114,7 @@
                 }
               ],
               "queryOptions": {},
-              "transformations": [
-                {
-                  "group": "partitionByValues",
-                  "kind": "Transformation",
-                  "spec": {
-                    "options": {
-                      "fields": [
-                        "sensor"
-                      ],
-                      "keepFields": false,
-                      "naming": {
-                        "asLabels": true
-                      }
-                    }
-                  }
-                }
-              ]
+              "transformations": []
             }
           },
           "description": "",
@@ -226,16 +248,16 @@
                     "hidden": false,
                     "query": {
                       "datasource": {
-                        "name": "eerr7h71y7s3ke"
+                        "name": "efyc45oo0t8g0b"
                       },
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
                         "dataset": "iox",
                         "editorMode": "code",
-                        "format": "table",
+                        "format": "time_series",
                         "rawQuery": true,
-                        "rawSql": "SELECT \r\n  time, \r\n  sensor, \r\n  temperature_c::INT AS hk_vorlauf\r\nFROM \r\n  environment\r\nWHERE \r\n  sensor IN ('hk_vorlauf')",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"temperature\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_vorlauf')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
                         "sql": {
                           "columns": [
                             {
@@ -312,6 +334,8 @@
                       "mode": "off"
                     }
                   },
+                  "max": 80,
+                  "min": 20,
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
