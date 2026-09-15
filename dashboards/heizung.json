@@ -51,7 +51,7 @@
                         "editorMode": "code",
                         "format": "time_series",
                         "rawQuery": true,
-                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_speicher\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_speicher')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_speicher\"\r\nFROM \r\n  sensors\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('hot_water_tank')\r\nGROUP BY 1\r\nORDER BY 1",
                         "sql": {
                           "columns": [
                             {
@@ -89,7 +89,7 @@
                         "editorMode": "code",
                         "format": "time_series",
                         "rawQuery": true,
-                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_vorlauf\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_vorlauf')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_vorlauf\"\r\nFROM \r\n  sensors\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('hot_water_circuit_flow')\r\nGROUP BY 1\r\nORDER BY 1",
                         "sql": {
                           "columns": [
                             {
@@ -257,9 +257,9 @@
                       "spec": {
                         "dataset": "iox",
                         "editorMode": "code",
-                        "format": "time_series",
+                        "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"temperature\"\r\nFROM \r\n  environment\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_vorlauf')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
+                        "rawSql": "SELECT\r\n  $__dateBin(time) AS \"time\",\r\n  AVG(temperature_c) AS \"temperature\"\r\nFROM \r\n  sensors\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('heating_circuit_flow')\r\nGROUP BY 1\r\nORDER BY 1",
                         "sql": {
                           "columns": [
                             {
@@ -333,7 +333,7 @@
                       "mode": "none"
                     },
                     "thresholdsStyle": {
-                      "mode": "off"
+                      "mode": "line"
                     }
                   },
                   "max": 80,
@@ -347,7 +347,7 @@
                       },
                       {
                         "color": "red",
-                        "value": 80
+                        "value": 45
                       }
                     ]
                   },
@@ -363,7 +363,7 @@
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "red",
+                          "fixedColor": "text",
                           "mode": "fixed"
                         }
                       }
