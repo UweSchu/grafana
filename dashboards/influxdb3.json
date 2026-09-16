@@ -158,7 +158,7 @@
                         "format": "table",
                         "query": "",
                         "rawQuery": true,
-                        "rawSql": "SELECT table_name AS _measurement, COUNT(*) AS anzahl_records\r\nFROM information_schema.columns\r\nWHERE table_schema = 'iox'\r\nGROUP BY table_name\r\nORDER BY table_name ASC",
+                        "rawSql": "SELECT \r\n  table_name,\r\n  SUM(row_count) AS total_records\r\nFROM system.parquet_files\r\nGROUP BY table_name\r\nORDER BY total_records DESC;",
                         "sql": {
                           "columns": [
                             {
@@ -227,7 +227,13 @@
               },
               "options": {
                 "cellHeight": "sm",
-                "showHeader": true
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "total_records"
+                  }
+                ]
               }
             },
             "version": "13.2.0"
