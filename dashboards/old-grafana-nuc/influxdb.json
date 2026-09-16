@@ -331,10 +331,10 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
-                "name": "panel-1"
+                "name": "panel-2"
               },
               "height": 8,
-              "width": 24,
+              "width": 12,
               "x": 0,
               "y": 0
             }
@@ -344,12 +344,12 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
-                "name": "panel-2"
+                "name": "panel-1"
               },
               "height": 8,
               "width": 12,
-              "x": 0,
-              "y": 8
+              "x": 12,
+              "y": 0
             }
           }
         ]
