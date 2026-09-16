@@ -402,7 +402,7 @@
                     "hidden": false,
                     "query": {
                       "datasource": {
-                        "name": "efyc45oo0t8g0b"
+                        "name": "eerr7h71y7s3ke"
                       },
                       "group": "influxdb",
                       "kind": "DataQuery",
