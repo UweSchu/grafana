@@ -261,7 +261,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "query": "from(bucket: \"heizung\")\r\n  |\u003e range(start: 0) // Zählt alles ab dem Beginn (0). Ggf. auf z. B. start: -30d einschränken, falls es zu groß ist.\r\n  |\u003e group(columns: [\"_measurement\"])\r\n  |\u003e count()\r\n  |\u003e rename(columns: {_value: \"anzahl_records\"})\r\n  |\u003e keep(columns: [\"_measurement\", \"anzahl_records\"])"
+                        "query": "from(bucket: \"heizung\")\r\n  |\u003e range(start: 0) // Zählt alles ab dem Beginn (0). Ggf. auf z. B. start: -30d einschränken, falls es zu groß ist.\r\n  |\u003e group(columns: [\"_measurement\"])\r\n  |\u003e count()\r\n  |\u003e rename(columns: {_value: \"anzahl_records\"})\r\n  |\u003e keep(columns: [\"anzahl_records\",\"_measurement\"])\r\n  |\u003e group() // \u003c--- Das fasst alle Einzel-Tabellen zu einer flachen Liste \r\n  |\u003e sort(columns: [\"_measurement\"], desc: false)"
                       },
                       "version": "v0"
                     },
@@ -276,7 +276,7 @@
           "description": "",
           "id": 2,
           "links": [],
-          "title": "New panel",
+          "title": "Total Records per Measurement",
           "vizConfig": {
             "group": "table",
             "kind": "VizConfig",
