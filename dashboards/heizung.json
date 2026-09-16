@@ -1159,7 +1159,7 @@
                         "editorMode": "code",
                         "format": "table",
                         "rawQuery": true,
-                        "rawSql": "SELECT time, counter_m3 FROM \"sensors\" WHERE \"sensor\" IN ('gaszaehler') order by time ASC",
+                        "rawSql": "SELECT \r\n  time, \r\n  counter_m3 \r\nFROM \r\n  sensors \r\nWHERE \r\n  sensor IN ('gaszaehler') order by time ASC",
                         "sql": {
                           "columns": [
                             {
