@@ -1,0 +1,514 @@
+{
+  "apiVersion": "dashboard.grafana.app/v1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "defyeesezdlq0we"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": false,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 2,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "default": true,
+          "type": "influxdb",
+          "uid": "l_EGrEJnz"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "palette-classic",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisGridShow": true,
+              "axisLabel": "",
+              "axisPlacement": "left",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 4,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 0,
+            "mappings": [],
+            "max": 80,
+            "min": 20,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "heizung_vorlauf temperature"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VL Heizung"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "warmwasser_vorlauf temperature"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VL Wasser"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "11.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "hide": false,
+            "query": "from(bucket: \"heizung\")\r\n|\u003e range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n|\u003e filter(fn: (r) =\u003e r[\"_measurement\"] == \"heizung_vorlauf\" or r[\"_measurement\"] == \"warmwasser_vorlauf\")\r\n|\u003e filter(fn: (r) =\u003e r[\"_field\"] == \"temperature\")\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "refId": "A"
+          }
+        ],
+        "title": "Heizung",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": true,
+          "type": "influxdb",
+          "uid": "l_EGrEJnz"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "fillOpacity": 20,
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineWidth": 0,
+              "spanNulls": false
+            },
+            "decimals": 0,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                },
+                {
+                  "color": "blue",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 1
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "programm"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "."
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 5,
+        "options": {
+          "alignValue": "left",
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "mergeValues": true,
+          "rowHeight": 0.74,
+          "showValue": "never",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "hide": false,
+            "query": "from(bucket: \"heizung\")\r\n|\u003e range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n|\u003e filter(fn: (r) =\u003e r[\"_measurement\"] == \"einstellungen\")\r\n|\u003e filter(fn: (r) =\u003e r[\"_field\"] == \"programm\")\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "refId": "A"
+          }
+        ],
+        "title": "Heizungsprogramm",
+        "type": "state-timeline"
+      },
+      {
+        "datasource": {
+          "default": true,
+          "type": "influxdb",
+          "uid": "l_EGrEJnz"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisGridShow": true,
+              "axisLabel": "",
+              "axisPlacement": "left",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "stepAfter",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 0,
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "purple",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "id": 6,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "hide": false,
+            "query": "from(bucket: \"heizung\")\r\n|\u003e range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n|\u003e filter(fn: (r) =\u003e r[\"_measurement\"] == \"einstellungen\")\r\n|\u003e filter(fn: (r) =\u003e r[\"_field\"] == \"programm\")\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "refId": "A"
+          }
+        ],
+        "title": "Heizungsprogramm",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": true,
+          "type": "influxdb",
+          "uid": "l_EGrEJnz"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "purple",
+              "mode": "fixed",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisGridShow": true,
+              "axisLabel": "",
+              "axisPlacement": "left",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 4,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 0,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 15
+                }
+              ]
+            },
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "TempC_int"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Temperature LHT65"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 3,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "asc"
+          }
+        },
+        "pluginVersion": "11.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "hide": false,
+            "query": "from(bucket: \"sensors\")\r\n|\u003e range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n|\u003e filter(fn: (r) =\u003e r[\"_measurement\"] == \"WWW\")\r\n|\u003e filter(fn: (r) =\u003e r[\"_field\"] == \"Temperature\")\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "hide": true,
+            "query": "from(bucket: \"sensors\")\r\n|\u003e range(start: v.timeRangeStart)\r\n|\u003e filter(fn: (r) =\u003e r[\"_measurement\"] == \"LHT65\")\r\n|\u003e filter(fn: (r) =\u003e r[\"_field\"] == \"TempC_int\")\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n|\u003e drop(columns: [\"_start\", \"_stop\", \"topic\"])",
+            "refId": "B"
+          }
+        ],
+        "title": "Außentemperatur",
+        "type": "timeseries"
+      }
+    ],
+    "preload": false,
+    "refresh": "10s",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h"
+      ]
+    },
+    "timezone": "Europe/Berlin",
+    "title": "Heizung (old)",
+    "weekStart": ""
+  }
+}
