@@ -219,15 +219,25 @@
                     ]
                   },
                   {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "warmwasser_speicher temperature"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "WW-Speicher"
+                      }
+                    ]
+                  },
+                  {
                     "__systemRef": "hideSeriesFrom",
                     "matcher": {
                       "id": "byNames",
                       "options": {
                         "mode": "exclude",
                         "names": [
-                          "VL Heizung",
-                          "warmwasser_speicher temperature",
-                          "VL Wasser"
+                          "VL Heizung"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
@@ -241,18 +251,6 @@
                           "tooltip": true,
                           "viz": true
                         }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "warmwasser_speicher temperature"
-                    },
-                    "properties": [
-                      {
-                        "id": "displayName",
-                        "value": "WW-Speicher"
                       }
                     ]
                   }
@@ -756,10 +754,10 @@
         "1h"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "2025-10-01T09:29:20.272Z",
+      "from": "2025-10-01T09:30:00.000Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "2025-10-01T10:47:41.873Z"
+      "to": "2025-10-01T10:30:00.000Z"
     },
     "title": "Heizung",
     "variables": []
