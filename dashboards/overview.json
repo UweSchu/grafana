@@ -33,7 +33,6 @@
       }
     ],
     "cursorSync": "Off",
-    "description": "",
     "editable": true,
     "elements": {
       "panel-3": {
@@ -65,7 +64,7 @@
                 "keepTime": true,
                 "maxItems": 10,
                 "query": "",
-                "showFolderNames": false,
+                "showFolderNames": true,
                 "showHeadings": false,
                 "showRecentlyViewed": false,
                 "showSearch": true,
