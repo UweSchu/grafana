@@ -1,0 +1,10 @@
+{
+  "kind": "Folder",
+  "apiVersion": "folder.grafana.app/v1",
+  "metadata": {
+    "name": "cfyeecj9tqby8a"
+  },
+  "spec": {
+    "title": "old-grafana-nuc"
+  }
+}
