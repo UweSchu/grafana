@@ -1,0 +1,243 @@
+{
+  "apiVersion": "dashboard.grafana.app/v1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "dafyeenpstoidcc"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": false,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "l_EGrEJnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 4,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "deckbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size 3013bd9c76c0454b"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "heizung"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size 606098678782cb6c"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "_tasks"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size 617832a115613d98"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "_monitor"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size b7912b2de376f147"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "hosts"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size d2857d2d01a4ce61"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "influxdb"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size 29137fe8ddfc771c"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "oss_metrics"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size ddb9a09f3f95d38f"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "sensors"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "size dee933eb926c7504"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "homi"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "11.3.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "l_EGrEJnz"
+            },
+            "query": "from(bucket: \"influxdb\")\r\n|\u003e range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n|\u003e filter(fn: (r) =\u003e \r\n    r[\"_measurement\"] == \"bucket\" and\r\n    r[\"_field\"] == \"size\"\r\n)\r\n|\u003e aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "refId": "A"
+          }
+        ],
+        "title": "Bucket Size",
+        "type": "timeseries"
+      }
+    ],
+    "preload": false,
+    "refresh": "5s",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "InfluxDB",
+    "weekStart": ""
+  }
+}
