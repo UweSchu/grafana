@@ -82,7 +82,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "New panel",
+          "title": "Disk Size",
           "vizConfig": {
             "group": "timeseries",
             "kind": "VizConfig",
