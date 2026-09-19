@@ -84,13 +84,14 @@
           "links": [],
           "title": "Disk Size",
           "vizConfig": {
-            "group": "timeseries",
+            "group": "barchart",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
                 "defaults": {
                   "color": {
-                    "mode": "palette-classic"
+                    "fixedColor": "super-light-blue",
+                    "mode": "fixed"
                   },
                   "custom": {
                     "axisBorderShow": false,
@@ -98,29 +99,16 @@
                     "axisColorMode": "text",
                     "axisLabel": "",
                     "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "barWidthFactor": 0.6,
-                    "drawStyle": "line",
-                    "fillOpacity": 0,
+                    "fillOpacity": 100,
                     "gradientMode": "none",
                     "hideFrom": {
                       "legend": false,
                       "tooltip": false,
                       "viz": false
                     },
-                    "insertNulls": false,
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
+                    "lineWidth": 0,
                     "scaleDistribution": {
                       "type": "linear"
-                    },
-                    "showPoints": "auto",
-                    "showValues": false,
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
                     },
                     "thresholdsStyle": {
                       "mode": "line"
@@ -129,7 +117,7 @@
                   "max": 100,
                   "min": 0,
                   "thresholds": {
-                    "mode": "percentage",
+                    "mode": "absolute",
                     "steps": [
                       {
                         "color": "green",
@@ -145,17 +133,28 @@
                 "overrides": []
               },
               "options": {
+                "barRadius": 0.5,
+                "barWidth": 0.76,
+                "colorByField": "time",
+                "fullHighlight": false,
+                "groupWidth": 0.8,
                 "legend": {
                   "calcs": [],
                   "displayMode": "list",
                   "placement": "bottom",
                   "showLegend": true
                 },
+                "orientation": "auto",
+                "showValue": "auto",
+                "stacking": "none",
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "single",
                   "sort": "none"
-                }
+                },
+                "xField": "time",
+                "xTickLabelRotation": 0,
+                "xTickLabelSpacing": 100
               }
             },
             "version": "13.2.0"
