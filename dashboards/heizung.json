@@ -49,6 +49,44 @@
                       "spec": {
                         "dataset": "iox",
                         "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT\r\n  DATE_BIN(INTERVAL '1 second', time) AS \"time\",\r\n  AVG(CASE WHEN sensor = 'ww_speicher' THEN temperature_c END) AS \"ww_speicher\",\r\n  AVG(CASE WHEN sensor = 'ww_vorlauf' THEN temperature_c END) AS \"ww_vorlauf\"\r\nFROM\r\n  sensors\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_speicher', 'ww_vorlauf')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1\r\n",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ]
+                        }
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "Warmwasser"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": true,
+                    "query": {
+                      "datasource": {
+                        "name": "eerr7h71y7s3ke"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "dataset": "iox",
+                        "editorMode": "code",
                         "format": "time_series",
                         "rawQuery": true,
                         "rawSql": "SELECT\r\n  DATE_BIN(INTERVAL '1 second', time) AS \"time\",\r\n  AVG(temperature_c) AS \"ww_speicher\"\r\nFROM\r\n  sensors\r\nWHERE\r\n  $__timeFilter(time)\r\n  AND sensor IN ('ww_speicher')\r\nGROUP BY\r\n  1\r\nORDER BY\r\n  1",
@@ -77,7 +115,7 @@
                 {
                   "kind": "PanelQuery",
                   "spec": {
-                    "hidden": false,
+                    "hidden": true,
                     "query": {
                       "datasource": {
                         "name": "eerr7h71y7s3ke"
@@ -157,7 +195,7 @@
                     },
                     "showPoints": "never",
                     "showValues": false,
-                    "spanNulls": false,
+                    "spanNulls": true,
                     "stacking": {
                       "group": "A",
                       "mode": "none"
@@ -233,7 +271,7 @@
                 }
               }
             },
-            "version": "13.2.0"
+            "version": "13.2.2"
           }
         }
       },
@@ -385,7 +423,7 @@
                 }
               }
             },
-            "version": "13.2.0"
+            "version": "13.2.2"
           }
         }
       },
@@ -516,7 +554,7 @@
                 }
               }
             },
-            "version": "13.2.0"
+            "version": "13.2.2"
           }
         }
       }
